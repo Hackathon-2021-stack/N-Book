@@ -4,7 +4,9 @@ import { Switch } from "react-router-dom";
 import About from "./components/About";
 import Alart from "./components/Alart";
 import { Home } from "./components/Home";
+import Login from "./components/Login";
 import Navbar from "./components/Navbar";
+import SignUp from "./components/SignUp";
 import NoteState from "./context/notes/NoteState";
 
 function App() {
@@ -21,6 +23,12 @@ function App() {
               </Route>
               <Route exact path="/about">
                 <About />
+              </Route>
+              <Route exact path="/login">
+                <Login/>
+              </Route>
+              <Route exact path="/signup">
+                <SignUp/>
               </Route>
             </Switch>
           </div>
