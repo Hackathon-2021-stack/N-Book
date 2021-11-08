@@ -1,11 +1,17 @@
 import React from "react";
-import {Link,useLocation} from "react-router-dom";
+import {Link,useLocation,useHistory} from "react-router-dom";
 
   
   
 
 const Navbar = () => {
   let location = useLocation();
+  const history = useHistory()
+
+  const handleLogout=()=>{
+    localStorage.removeItem('token')
+    history.push('/login')
+  }
 
   return (
     <>
@@ -37,11 +43,16 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
+              <li className="nav-item">
+                <a className={`nav-link`} href="https://wonderful-mestorf-b57831.netlify.app/">
+                  Format Text
+                </a>
+              </li>
             </ul>
-            <form className="d-flex">
+            {!localStorage.getItem('token')?<form className="d-flex">
               <Link className="btn btn-outline-success mx-1" to="/login" role="button">Login</Link>
               <Link className="btn btn-outline-success mx-1" to="/signup" role="button">SignUp</Link>
-            </form>
+            </form>:<button className="btn btn-outline-success mx-1" onClick={handleLogout}>Logout</button>}
           </div>
         </div>
       </nav>
